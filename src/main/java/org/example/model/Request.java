@@ -15,7 +15,7 @@ public class Request {
     private final int key;
     private final String outputFileName;
 
-    public Request(String[] args) {
+    public Request(String ... args) {
         Map<String, String> cliArgsMap = transformToMap(args);
 
         this.algorithm = cliArgsMap.getOrDefault(ALGORITHM, SHIFT);

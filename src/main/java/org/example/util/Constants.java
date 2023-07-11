@@ -2,6 +2,7 @@ package org.example.util;
 
 public final class Constants {
 
+    // Number of letters in English alphabet
     public static final int NUMBER_OF_LETTERS = 26;
 
     // Mode

@@ -6,7 +6,7 @@ import org.example.model.Request;
 import org.example.repository.Repository;
 
 public class CryptoService {
-    public void run(String ... args) {
+    public String run(String ... args) {
         Request request = new Request(args);
 
         Cryptographer cryptographer = CryptographerFactory.createCryptographer(request.getAlgorithm());
@@ -16,14 +16,12 @@ public class CryptoService {
                 request.getOperation()
         );
 
-        printData(processedData, request.getOutputFileName());
+        if (request.getOutputFileName() == null) {
+            return processedData;
+        }
+
+        Repository.writeDataToFile(request.getOutputFileName(), processedData);
+        return null;
     }
 
-    private void printData(String data, String outputFile) {
-        if (outputFile == null) {
-            System.out.println(data);
-        } else {
-            Repository.writeDataToFile(outputFile, data);
-        }
-    }
 }
